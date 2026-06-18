@@ -1,0 +1,12 @@
+stages:
+  - run_etl
+
+run_tradingview_etl:
+  stage: run_etl
+  image: python:3.11-slim
+  before_script:
+    - pip install --no-cache-dir -r requirements.txt
+  script:
+    - python market_etl_pipeline.py
+  only:
+    - main
